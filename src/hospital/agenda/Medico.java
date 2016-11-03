@@ -5,6 +5,8 @@
  */
 package hospital.agenda;
 
+import javafx.scene.chart.PieChart.Data;
+
 /**
  *
  * @author Daniel S
@@ -12,6 +14,7 @@ package hospital.agenda;
 public class Medico {
     
         private String nome;
+        private Data data;
 
     public String getNome() {
         return nome;

@@ -41,10 +41,10 @@ public class Aplicacao extends javax.swing.JFrame {
         jTextField4 = new javax.swing.JTextField();
         jTextField5 = new javax.swing.JTextField();
         jTextField6 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        btnAdicionar = new javax.swing.JButton();
+        btnSalvar = new javax.swing.JButton();
+        btnCancela = new javax.swing.JButton();
+        btnExcluir = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -52,8 +52,7 @@ public class Aplicacao extends javax.swing.JFrame {
         jTextField7 = new javax.swing.JTextField();
         jTextField8 = new javax.swing.JTextField();
         jTextField9 = new javax.swing.JTextField();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
+        btnPesquisar = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         jTextField10 = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -79,13 +78,13 @@ public class Aplicacao extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("Adicionar");
+        btnAdicionar.setText("Adicionar");
 
-        jButton2.setText("Salvar");
+        btnSalvar.setText("Salvar");
 
-        jButton3.setText("Cancelar");
+        btnCancela.setText("Cancelar");
 
-        jButton4.setText("Excluir");
+        btnExcluir.setText("Excluir");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -113,11 +112,11 @@ public class Aplicacao extends javax.swing.JFrame {
                             .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(69, 69, 69)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton1)
+                            .addComponent(btnAdicionar)
                             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(jButton4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButton2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButton3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                                .addComponent(btnExcluir, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnSalvar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnCancela, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
                 .addGap(0, 223, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -127,22 +126,22 @@ public class Aplicacao extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel11)
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1))
+                    .addComponent(btnAdicionar))
                 .addGap(21, 21, 21)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel12)
                     .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2))
+                    .addComponent(btnSalvar))
                 .addGap(26, 26, 26)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel13)
                     .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton3))
+                    .addComponent(btnCancela))
                 .addGap(29, 29, 29)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel14)
                     .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton4))
+                    .addComponent(btnExcluir))
                 .addGap(27, 27, 27)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel15)
@@ -156,11 +155,11 @@ public class Aplicacao extends javax.swing.JFrame {
 
         jTabbedPane2.addTab("Registro", jPanel2);
 
-        jLabel1.setText("Procurar por Paciente");
+        jLabel1.setText("Paciente");
 
-        jLabel2.setText("Procurar por CPF");
+        jLabel2.setText("CPF");
 
-        jLabel3.setText("Procurar por Medico");
+        jLabel3.setText(" Medico");
 
         jTextField8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -168,11 +167,9 @@ public class Aplicacao extends javax.swing.JFrame {
             }
         });
 
-        jButton5.setText("Pesquisar");
+        btnPesquisar.setText("Pesquisar");
 
-        jButton6.setText("Excluir");
-
-        jLabel4.setText("Procurar por Doença");
+        jLabel4.setText("Doença");
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -209,9 +206,7 @@ public class Aplicacao extends javax.swing.JFrame {
                             .addComponent(jTextField9)
                             .addComponent(jTextField10, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE))
                         .addGap(60, 60, 60)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addComponent(btnPesquisar)))
                 .addContainerGap(56, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -221,13 +216,12 @@ public class Aplicacao extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton5))
-                .addGap(17, 17, 17)
+                    .addComponent(btnPesquisar))
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton6))
-                .addGap(18, 18, 18)
+                    .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(20, 20, 20)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -306,12 +300,11 @@ public class Aplicacao extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
+    private javax.swing.JButton btnAdicionar;
+    private javax.swing.JButton btnCancela;
+    private javax.swing.JButton btnExcluir;
+    private javax.swing.JButton btnPesquisar;
+    private javax.swing.JButton btnSalvar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;

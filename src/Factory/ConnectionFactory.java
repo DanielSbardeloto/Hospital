@@ -7,6 +7,7 @@ package Factory;
 
 import com.mysql.jdbc.Connection;
 import java.sql.DriverManager;
+import java.sql.SQLException;
 
 /**
  *
@@ -14,11 +15,11 @@ import java.sql.DriverManager;
  */
 public class ConnectionFactory {
     
-   // public Connection getConnection(){
-    //try{
-        //return DriverManager.getConnection("jdbc:mysql://localhost/projetojava","")
-    //}
-    
-    //}
-    
+    public static Connection getConnection() throws SQLException {
+        Connection cone = (Connection) DriverManager.getConnection("jdbc:derby://localhost:1527/Banco"); 
+        return cone;
+        
+    }
+   
 }
+    
