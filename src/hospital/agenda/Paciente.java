@@ -11,14 +11,19 @@ package hospital.agenda;
  */
 public class Paciente {
     private String nome;
-    private int idade;
+    private Integer idade;
     private String doenca;
+    private String CPF;
+    private int id;
 
-    /*public Paciente(String nome, int idade, String doenca) {
-        this.nome = nome;
-        this.idade = idade;
-        this.doenca = doenca;
-    }*/
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
 
     public String getNome() {
         return nome;
@@ -28,11 +33,11 @@ public class Paciente {
         this.nome = nome;
     }
 
-    public int getIdade() {
+    public Integer getIdade() {
         return idade;
     }
 
-    public void setIdade(int idade) {
+    public void setIdade(Integer idade) {
         this.idade = idade;
     }
 
@@ -43,5 +48,11 @@ public class Paciente {
     public void setDoenca(String doenca) {
         this.doenca = doenca;
     }
-    
+    public String getCPF() {
+        return CPF;
+    }
+
+    public void setCPF(String CPF) {
+        this.CPF = CPF;
+    }
 }

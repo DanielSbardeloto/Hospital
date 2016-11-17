@@ -5,6 +5,7 @@
  */
 package hospital.agenda;
 
+import java.sql.Date;
 import javafx.scene.chart.PieChart.Data;
 
 /**
@@ -14,7 +15,16 @@ import javafx.scene.chart.PieChart.Data;
 public class Medico {
     
         private String nome;
-        private Data data;
+        private Date dia;
+        private int id;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getNome() {
         return nome;
@@ -24,15 +34,12 @@ public class Medico {
         this.nome = nome;
     }
 
-    
-    private String atendimento;
-
-    public String getAtendimento() {
-        return atendimento;
+    public Date getDia() {
+        return dia;
     }
 
-    public void setAtendimento(String atendimento) {
-        this.atendimento = atendimento;
-    }
+    public void setDia(Date dia) {
+        this.dia = dia;
+    } 
 
 }
