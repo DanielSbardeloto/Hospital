@@ -114,7 +114,7 @@ public class PacienteDAO {
                     paciente.setNome(resultSet.getString("nome"));
                     paciente.setIdade(resultSet.getInt("idade"));
                     paciente.setCPF(resultSet.getString("CPF"));
-                    paciente.setDoenca(resultSet.getString("doenca"));
+                    paciente.setDoenca(resultSet.getString("doença"));
                     pacientes.add(paciente);
                 }
             }
@@ -138,7 +138,7 @@ public class PacienteDAO {
                     paciente.setNome(resultSet.getString("nome"));
                     paciente.setIdade(resultSet.getInt("idade"));
                     paciente.setCPF(resultSet.getString("CPF"));
-                    paciente.setDoenca(resultSet.getString("doenca"));
+                    paciente.setDoenca(resultSet.getString("doença"));
                     pacientes.add(paciente);
                 }
             }
@@ -147,7 +147,7 @@ public class PacienteDAO {
         return pacientes;
     }
     public List<Paciente> findByDoenca(String doenca) throws SQLException {
-        String sql = "Select * from Paciente p where upper(p.doenca) like ?";
+        String sql = "Select * from Paciente p where upper(p.doença) like ?";
         List<Paciente> pacientes = new ArrayList<>();
         Paciente paciente = null;
         try (PreparedStatement stm = cone.prepareStatement(sql)) {
@@ -162,7 +162,7 @@ public class PacienteDAO {
                     paciente.setNome(resultSet.getString("nome"));
                     paciente.setIdade(resultSet.getInt("idade"));
                     paciente.setCPF(resultSet.getString("CPF"));
-                    paciente.setDoenca(resultSet.getString("doenca"));
+                    paciente.setDoenca(resultSet.getString("doença"));
                     pacientes.add(paciente);
                 }
             }
@@ -187,7 +187,7 @@ public class PacienteDAO {
                     paciente.setNome(resultSet.getString("nome"));
                     paciente.setIdade(resultSet.getInt("idade"));
                     paciente.setCPF(resultSet.getString("CPF"));
-                    paciente.setDoenca(resultSet.getString("doenca"));
+                    paciente.setDoenca(resultSet.getString("doença"));
                     pacientes.add(paciente);
                 }
             }
