@@ -13,21 +13,21 @@ import javax.swing.table.AbstractTableModel;
  *
  * @author Daniel S
  */
-public class PacienteTableModel extends AbstractTableModel {
+public class EnderecoTableModel extends AbstractTableModel {
 
-    private List<Paciente> pacientes;
+    private List<Paciente> enderecos;
 
-    public PacienteTableModel(List<Paciente> pacientes) {
-        this.pacientes = pacientes;
+    public EnderecoTableModel(List<Paciente> enderecos) {
+        this.enderecos = enderecos;
     }
 
-    public void setPacientes(List<Paciente> pacientes) {
-        this.pacientes = pacientes;
+    public void setEnderecos(List<Paciente> enderecos) {
+        this.enderecos = enderecos;
     }
 
     @Override
     public int getRowCount() {
-        return pacientes.size();
+        return enderecos.size();
     }
 
     @Override
@@ -37,13 +37,14 @@ public class PacienteTableModel extends AbstractTableModel {
 
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
-        Paciente paciente = pacientes.get(rowIndex);
+        Paciente endereco = enderecos.get(rowIndex);
         switch (columnIndex) {
-            case 0: return paciente.getId();
-            case 1: return paciente.getNome();
-            case 2: return paciente.getIdade();
-            case 3: return paciente.getDoenca();
-            case 4: return paciente.getCPF();
+         
+            case 0: return endereco.getRua();
+            case 1: return endereco.getNumero();
+            case 2: return endereco.getBairro();
+            case 3: return endereco.getCidade();
+            case 4: return endereco.getUF();
             default:
                 throw new AssertionError();
         }
@@ -52,11 +53,13 @@ public class PacienteTableModel extends AbstractTableModel {
     @Override
     public String getColumnName(int column) {
         switch (column) {
-            case 0: return "Id";
-            case 1: return "Nome";
-            case 2: return "Idade";
-            case 3: return "Diagnóstico";
-            case 4: return "CPF";
+           
+            case 0: return "Rua";
+            case 1: return "Numero";
+            case 2: return "Bairro";
+            case 3: return "Cidade";
+            case 4: return "UF";
+            
             
             default:
                 throw new AssertionError();

@@ -5,6 +5,8 @@
  */
 package hospital.agenda;
 
+import java.sql.Date;
+
 /**
  *
  * @author Daniel S
@@ -14,7 +16,53 @@ public class Paciente {
     private Integer idade;
     private String doenca;
     private String CPF;
-    private int id;
+    private Integer id;
+    private String rua;
+    private String bairro;
+    private Integer numero;
+    private String UF;
+
+    public Integer getNumero() {
+        return numero;
+    }
+
+    public void setNumero(Integer numero) {
+        this.numero = numero;
+    }
+
+    public String getUF() {
+        return UF;
+    }
+
+    public void setUF(String UF) {
+        this.UF = UF;
+    }
+
+    public String getRua() {
+        return rua;
+    }
+
+    public void setRua(String rua) {
+        this.rua = rua;
+    }
+
+    public String getBairro() {
+        return bairro;
+    }
+
+    public void setBairro(String bairro) {
+        this.bairro = bairro;
+    }
+
+
+    public String getCidade() {
+        return cidade;
+    }
+
+    public void setCidade(String cidade) {
+        this.cidade = cidade;
+    }
+    private String cidade;
 
     public Integer getId() {
         return id;
