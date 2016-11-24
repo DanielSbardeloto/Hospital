@@ -32,7 +32,7 @@ public class PacienteTableModel extends AbstractTableModel {
 
     @Override
     public int getColumnCount() {
-        return 5;
+        return 6;
     }
 
     @Override
@@ -44,6 +44,7 @@ public class PacienteTableModel extends AbstractTableModel {
             case 2: return paciente.getIdade();
             case 3: return paciente.getDoenca();
             case 4: return paciente.getCPF();
+            case 5: return paciente.getSexo();
             default:
                 throw new AssertionError();
         }
@@ -57,6 +58,7 @@ public class PacienteTableModel extends AbstractTableModel {
             case 2: return "Idade";
             case 3: return "Diagnóstico";
             case 4: return "CPF";
+            case 5: return "Sexo";
             
             default:
                 throw new AssertionError();

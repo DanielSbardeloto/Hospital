@@ -22,7 +22,7 @@ public class PacienteDAO {
     }
     
     public Integer create(Paciente paciente) throws SQLException {
-        String sql = "insert into Paciente(nome, idade, CPF, doença, rua, numero, bairro, cidade, UF) values (?,?,?,?,?,?,?,?,?)";
+        String sql = "insert into Paciente(nome, idade, CPF, doença, rua, numero, bairro, cidade, UF, sexo) values (?,?,?,?,?,?,?,?,?,?)";
         Integer idCriado = 0;
         try (PreparedStatement stm = cone.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
             stm.setString(1, paciente.getNome());
@@ -34,7 +34,7 @@ public class PacienteDAO {
             stm.setString(7, paciente.getBairro());
             stm.setString(8, paciente.getCidade());
             stm.setString(9, paciente.getUF());
-            //stm.setDate(10, paciente.getDia());
+            stm.setString(10, paciente.getSexo());
             stm.execute();
             
             try (ResultSet resultSet = stm.getGeneratedKeys()) {
@@ -52,7 +52,7 @@ public class PacienteDAO {
     }
     public void update(Paciente paciente) throws SQLException {
         String sql = "update Paciente set nome = ?, set idade = ?, set CPF = ?, set doença = ?,"
-                + " set rua = ?, set numero = ?, set bairro = ?, set cidade = ?, set UF = ? where id = ?";
+                + " set rua = ?, set numero = ?, set bairro = ?, set cidade = ?, set UF = ?, set sexo = ? where id = ?";
         
         try (PreparedStatement stm = cone.prepareStatement(sql)) {
             stm.setString(1, paciente.getNome());
@@ -60,11 +60,12 @@ public class PacienteDAO {
             stm.setString(4, paciente.getCPF());
             stm.setString(5, paciente.getDoenca());
             stm.setInt(2, paciente.getId());
-            stm.setString(1, paciente.getRua());
-            stm.setInt(2, paciente.getNumero());
-            stm.setString(3, paciente.getBairro());
-            stm.setString(4, paciente.getCidade());
-            stm.setString(5, paciente.getUF());
+            stm.setString(6, paciente.getRua());
+            stm.setInt(7, paciente.getNumero());
+            stm.setString(8, paciente.getBairro());
+            stm.setString(9, paciente.getCidade());
+            stm.setString(10, paciente.getUF());
+            stm.setString(11, paciente.getSexo());
 
             stm.executeUpdate();
             
@@ -110,6 +111,7 @@ public class PacienteDAO {
                     paciente.setBairro(resultSet.getString("Bairro"));
                     paciente.setCidade(resultSet.getString("Cidade"));
                     paciente.setUF(resultSet.getString("UF"));
+                    paciente.setSexo(resultSet.getString("sexo"));
                     
                 }
             }
@@ -140,6 +142,7 @@ public class PacienteDAO {
                     paciente.setBairro(resultSet.getString("Bairro"));
                     paciente.setCidade(resultSet.getString("Cidade"));
                     paciente.setUF(resultSet.getString("UF"));
+                    paciente.setSexo(resultSet.getString("sexo"));
                    
                     pacientes.add(paciente);
                 }
@@ -170,6 +173,7 @@ public class PacienteDAO {
                     paciente.setBairro(resultSet.getString("Bairro"));
                     paciente.setCidade(resultSet.getString("Cidade"));
                     paciente.setUF(resultSet.getString("UF"));
+                    paciente.setSexo(resultSet.getString("sexo"));
                     
                     pacientes.add(paciente);
                 }
@@ -200,7 +204,7 @@ public class PacienteDAO {
                     paciente.setBairro(resultSet.getString("Bairro"));
                     paciente.setCidade(resultSet.getString("Cidade"));
                     paciente.setUF(resultSet.getString("UF"));
-                
+                    paciente.setSexo(resultSet.getString("sexo"));
                     pacientes.add(paciente);
                 }
             }
@@ -231,6 +235,7 @@ public class PacienteDAO {
                     paciente.setBairro(resultSet.getString("Bairro"));
                     paciente.setCidade(resultSet.getString("Cidade"));
                     paciente.setUF(resultSet.getString("UF"));
+                    paciente.setSexo(resultSet.getString("sexo"));
                     
                     pacientes.add(paciente);
                 }
@@ -261,6 +266,7 @@ public class PacienteDAO {
                     paciente.setBairro(resultSet.getString("Bairro"));
                     paciente.setCidade(resultSet.getString("Cidade"));
                     paciente.setUF(resultSet.getString("UF"));
+                    paciente.setSexo(resultSet.getString("sexo"));
                     
                     pacientes.add(paciente);
                 }
@@ -291,6 +297,7 @@ public class PacienteDAO {
                     paciente.setBairro(resultSet.getString("Bairro"));
                     paciente.setCidade(resultSet.getString("Cidade"));
                     paciente.setUF(resultSet.getString("UF"));
+                    paciente.setSexo(resultSet.getString("sexo"));
                     
                     pacientes.add(paciente);
                 }
@@ -321,6 +328,7 @@ public class PacienteDAO {
                     paciente.setBairro(resultSet.getString("Bairro"));
                     paciente.setCidade(resultSet.getString("Cidade"));
                     paciente.setUF(resultSet.getString("UF"));
+                    paciente.setSexo(resultSet.getString("sexo"));
                     
                     pacientes.add(paciente);
                 }
@@ -351,6 +359,7 @@ public class PacienteDAO {
                     paciente.setBairro(resultSet.getString("Bairro"));
                     paciente.setCidade(resultSet.getString("Cidade"));
                     paciente.setUF(resultSet.getString("UF"));
+                    paciente.setSexo(resultSet.getString("sexo"));
                   
                     pacientes.add(paciente);
                 }
@@ -381,6 +390,7 @@ public class PacienteDAO {
                     paciente.setBairro(resultSet.getString("Bairro"));
                     paciente.setCidade(resultSet.getString("Cidade"));
                     paciente.setUF(resultSet.getString("UF"));
+                    paciente.setSexo(resultSet.getString("sexo"));
                  
                     pacientes.add(paciente);
                 }
@@ -389,13 +399,13 @@ public class PacienteDAO {
      return pacientes;
     }
     
-    /*public List<Paciente> findByDia(String dia) throws SQLException {
-        String sql = "Select * from Paciente p where upper(p.dia) like ?";
+    public List<Paciente> findBySexo(String sexo) throws SQLException {
+        String sql = "Select * from Paciente p where upper(p.sexo) like ?";
         List<Paciente> pacientes = new ArrayList<>();
         Paciente paciente = null;
         try (PreparedStatement stm = cone.prepareStatement(sql)) {
 
-            stm.setString(1, "%" + dia.toUpperCase() + "%" );
+            stm.setString(1, "%" + sexo.toUpperCase() + "%" );
             stm.execute();
 
             try (ResultSet resultSet = stm.getResultSet()) {
@@ -411,12 +421,12 @@ public class PacienteDAO {
                     paciente.setBairro(resultSet.getString("Bairro"));
                     paciente.setCidade(resultSet.getString("Cidade"));
                     paciente.setUF(resultSet.getString("UF"));
-                    paciente.setDia(resultSet.getDate("dia"));
+                    paciente.setSexo(resultSet.getString("sexo"));
                     pacientes.add(paciente);
                 }
             }
         }
      return pacientes;
-    }*/
+    }
 }
 

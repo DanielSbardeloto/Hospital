@@ -21,9 +21,18 @@ public class Paciente {
     private String bairro;
     private Integer numero;
     private String UF;
+    private String sexo;
 
     public Integer getNumero() {
         return numero;
+    }
+
+    public String getSexo() {
+        return sexo;
+    }
+
+    public void setSexo(String sexo) {
+        this.sexo = sexo;
     }
 
     public void setNumero(Integer numero) {
