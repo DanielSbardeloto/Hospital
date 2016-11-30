@@ -20,6 +20,7 @@ public class Aplicacao extends javax.swing.JFrame {
     public Aplicacao() {
         initComponents();
         inicializar();
+        
     }
 
     private void inicializar() {
@@ -36,6 +37,10 @@ public class Aplicacao extends javax.swing.JFrame {
         pacientes = new ArrayList<>();
         pacientesTableModel = new PacienteTableModel(pacientes);
         tbRegistro.setModel((TableModel) pacientesTableModel);
+
+        btnSalvar.setEnabled(false);
+        btnCancela.setEnabled(false);
+        txtCPF.setDocument(new Limite_digitos(11));
     }
 
     @SuppressWarnings("unchecked")
@@ -73,7 +78,7 @@ public class Aplicacao extends javax.swing.JFrame {
         btnExcluir = new javax.swing.JButton();
         btnMaisInfo = new javax.swing.JButton();
 
-        maisDados.setSize(new java.awt.Dimension(580, 302));
+        maisDados.setSize(new java.awt.Dimension(580, 340));
 
         pnMais.setBackground(new java.awt.Color(222, 243, 248));
         pnMais.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -87,7 +92,9 @@ public class Aplicacao extends javax.swing.JFrame {
             }
         });
 
+        jScrollPane.setBackground(new java.awt.Color(255, 255, 255));
         jScrollPane.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jScrollPane.setForeground(new java.awt.Color(255, 255, 255));
         jScrollPane.setViewportBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         tbEnde.setModel(new javax.swing.table.DefaultTableModel(
@@ -122,8 +129,8 @@ public class Aplicacao extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(btnVisualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(38, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout maisDadosLayout = new javax.swing.GroupLayout(maisDados.getContentPane());
@@ -139,8 +146,8 @@ public class Aplicacao extends javax.swing.JFrame {
             maisDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(maisDadosLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(pnMais, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(pnMais, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -450,9 +457,11 @@ public class Aplicacao extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+
     private void btnAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionarActionPerformed
         paciente = new Paciente();
         limparEdits();
+
         txtPaciente.grabFocus();
         txtPaciente.setEnabled(true);
         btnAdicionar.setEnabled(false);
@@ -468,14 +477,13 @@ public class Aplicacao extends javax.swing.JFrame {
             if (paciente.getId() == null || paciente.getId() == 0) {
                 Integer id = pacienteDAO.create(paciente);
                 paciente.setId(id);
-                // txtId.setText(id.toString());
 
             } else {
                 pacienteDAO.update(paciente);
 
             }
 
-             btnAdicionar.setEnabled(true);
+            btnAdicionar.setEnabled(true);
             btnExcluir.setEnabled(true);
             btnCancela.setEnabled(true);
 
@@ -498,12 +506,11 @@ public class Aplicacao extends javax.swing.JFrame {
     }//GEN-LAST:event_btnPesquisarActionPerformed
 
     private void rbMasculinoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbMasculinoActionPerformed
-     
-       
+
     }//GEN-LAST:event_rbMasculinoActionPerformed
 
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
-        //tbRegistro.getSelectedRow();
+
         paciente = pacientes.get(tbRegistro.getSelectedRow());
         int resultado = JOptionPane.showConfirmDialog(this, "Confirma exclusão", "Confirmação", JOptionPane.YES_NO_CANCEL_OPTION);
         if (resultado == 0) {
@@ -527,13 +534,13 @@ public class Aplicacao extends javax.swing.JFrame {
         btnSalvar.setEnabled(false);
         btnCancela.setEnabled(false);
         btnExcluir.setEnabled(true);
-        //rbMasculino.setSelected(false);
-        //rbFeminino.setSelected(false);
+        rbMasculino.setSelected(false);
+        rbFeminino.setSelected(false);
     }//GEN-LAST:event_btnCancelaActionPerformed
 
     private void btnMaisInfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMaisInfoActionPerformed
         maisDados.setVisible(true);
-       /// btnPesquisarActionPerformed(null);
+
     }//GEN-LAST:event_btnMaisInfoActionPerformed
 
     private void btnVisualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVisualizarActionPerformed
@@ -543,49 +550,71 @@ public class Aplicacao extends javax.swing.JFrame {
             enderecosTableModel.fireTableDataChanged();
         } catch (SQLException ex) {
             Logger.getLogger(Aplicacao.class.getName()).log(Level.SEVERE, null, ex);
-            
+
         }
     }//GEN-LAST:event_btnVisualizarActionPerformed
 
-    public String escolheSexo() {
-
-        if (rbMasculino.isSelected()) {
-            return "Masculino";
-        } else {
-
-            return "Feminino";
-        }
-    }
-
-    public void setaSexo() {
-
-        if (String.valueOf(pacientes.get(tbRegistro.getSelectedRow()).getSexo()).equals("Masculino")) {
-            rbMasculino.setSelected(true);
-        } else {
-            rbFeminino.setSelected(true);
-        }
-    }
-
-    public boolean verificaCpf(String cpf) {
-
-        if (cpf.length() == 11) //Conta os pontos e traços
-        {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
+ /*   public final class ValidarCpf {
+  private String cpf;
+  public ValidarCpf() {
+  }
+  public boolean validarCpf(String cpf){  
+      if ( cpf == null ){
+          return false;
+      }
+      else{
+              String cpfGerado = "";    
+              this.cpf = cpf;          
+               removerCaracteres();            
+          if ( verificarSeTamanhoInvalido(this.cpf) )
+               return false;      
+          if ( verificarSeDigIguais(this.cpf) )
+               return false;            
+          cpfGerado = this.cpf.substring(0, 9);
+          cpfGerado = cpfGerado.concat(calculoComCpf(cpfGerado));
+          cpfGerado = cpfGerado.concat(calculoComCpf(cpfGerado));
+         
+          if ( !cpfGerado.equals(this.cpf))
+               return false;
+      }
+      return true;
+  }
+   
+  private void removerCaracteres(){  
+   this.cpf = this.cpf.replace("-","");
+   this.cpf = this.cpf.replace(".","");  
+  }
+  private boolean verificarSeTamanhoInvalido(String cpf){  
+      if ( cpf.length() != 11 )
+        return true;  
+          return false;
+  }
+  private boolean verificarSeDigIguais(String cpf){  
+    //char primDig = cpf.charAt(0);
+      char primDig = '0';
+      char [] charCpf = cpf.toCharArray();  
+         for( char c: charCpf  )
+             if ( c != primDig )
+             return false;        
+             return true;
+  }
+  private String calculoComCpf(String cpf){  
+   int digGerado = 0;
+   int mult = cpf.length()+1;
+   char [] charCpf = cpf.toCharArray();
+   for ( int i = 0; i < cpf.length(); i++ )
+        digGerado += (charCpf[i]-48)* mult--;
+   if ( digGerado % 11 < 2)
+        digGerado = 0;
+   else
+       digGerado = 11 - digGerado % 11;
+   return  String.valueOf(digGerado);
+  }
+  }*/
+    
+    
     private void txtCPFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCPFActionPerformed
-        if (verificaCpf(txtCPF.getText()) == true) {
-            JOptionPane.showMessageDialog(this, "Gravado com sucesso", "Informação", JOptionPane.INFORMATION_MESSAGE);
-            btnAdicionarActionPerformed(null);
-        } else {
-            Object ex = null;
-            Logger.getLogger(Aplicacao.class.getName()).log(Level.SEVERE, null, ex);
-            JOptionPane.showMessageDialog(this, "CPF Invalido", "Erro", JOptionPane.ERROR);
-        }
-
+       
     }//GEN-LAST:event_txtCPFActionPerformed
 
     private void txtUFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUFActionPerformed
@@ -593,27 +622,23 @@ public class Aplicacao extends javax.swing.JFrame {
     }//GEN-LAST:event_txtUFActionPerformed
 
     private void tbRegistroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbRegistroMouseClicked
-       if(evt.getClickCount() == 2) {
+        if (evt.getClickCount() == 2) {
             paciente = pacientes.get(tbRegistro.getSelectedRow());
             pacienteParaEdit();
             painelPrincipal.setSelectedIndex(1);
             txtPaciente.setEnabled(true);
             btnAdicionar.setEnabled(false);
-            btnSalvar.setEnabled(true);
+            btnSalvar.setEnabled(false);
             btnCancela.setEnabled(true);
             btnExcluir.setEnabled(true);
         }
     }//GEN-LAST:event_tbRegistroMouseClicked
 
     private void rbFemininoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbFemininoActionPerformed
-        
+
     }//GEN-LAST:event_rbFemininoActionPerformed
 
-
     private void editParaPaciente() {
-        //if(txtId.getText() != null && !txtId.getText().isEmpty()) {
-        // paciente.setId(Integer.parseInt(txtId.getText()));
-        // }
 
         paciente.setNome(txtPaciente.getText());//.charAt(0).toUpperCase()+txtPaciente.substring(1,txtPaciente));
         paciente.setIdade(Integer.parseInt(txtIdade.getText()));
@@ -624,17 +649,17 @@ public class Aplicacao extends javax.swing.JFrame {
         paciente.setBairro(txtBairro.getText());
         paciente.setCidade(txtCidade.getText());
         paciente.setUF(txtUF.getText().toUpperCase());
-        if(rbMasculino.isSelected()){
-           paciente.setSexo("Masculino");
-        
-        }else{
+        if (rbMasculino.isSelected()) {
+            paciente.setSexo("Masculino");
+
+        } else {
             rbFeminino.isSelected();
             paciente.setSexo("Feminino");
         }
     }
 
     private void pacienteParaEdit() {
-        //txtId.setText(paciente.getId().toString());
+
         txtPaciente.setText(paciente.getNome());
         txtIdade.setText(paciente.getIdade().toString());
         txtDiagno.setText(paciente.getDoenca());
@@ -649,7 +674,7 @@ public class Aplicacao extends javax.swing.JFrame {
     }
 
     private void limparEdits() {
-        //txtId.setText("");
+
         txtPaciente.setText("");
         txtIdade.setText("");
         txtDiagno.setText("");
@@ -662,7 +687,6 @@ public class Aplicacao extends javax.swing.JFrame {
         rbMasculino.setSelected(false);
         rbFeminino.setSelected(false);
     }
-    
 
     /**
      * @param args the command line arguments
@@ -738,5 +762,4 @@ public class Aplicacao extends javax.swing.JFrame {
     private PacienteTableModel pacientesTableModel;
     private EnderecoTableModel enderecosTableModel;
 
-    
 }
