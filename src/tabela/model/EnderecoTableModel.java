@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package hospital.agenda;
+package tabela.model;
 
+import hospital.agenda.viwer.Paciente;
 import java.util.List;
 import java.util.List;
 import javax.swing.table.AbstractTableModel;

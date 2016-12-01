@@ -1,4 +1,4 @@
-package Factory;
+package Factory.dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

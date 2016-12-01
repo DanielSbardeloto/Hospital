@@ -1,7 +1,9 @@
-package hospital.agenda;
+package hospital.agenda.viwer;
 
-import Factory.ConnectionFactory;
-import Factory.PacienteDAO;
+import tabela.model.EnderecoTableModel;
+import tabela.model.PacienteTableModel;
+import Factory.dao.ConnectionFactory;
+import Factory.dao.PacienteDAO;
 import java.awt.event.KeyEvent;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -164,11 +166,6 @@ public class Aplicacao extends javax.swing.JFrame {
         txtIdade.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 3, true), "Idade", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
 
         txtCPF.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 3, true), "CPF", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
-        txtCPF.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtCPFActionPerformed(evt);
-            }
-        });
 
         txtDiagno.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 3, true), "Diagnostico", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
 
@@ -230,11 +227,6 @@ public class Aplicacao extends javax.swing.JFrame {
         rbMasculino.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         rbMasculino.setText("Masculino");
         rbMasculino.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        rbMasculino.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rbMasculinoActionPerformed(evt);
-            }
-        });
 
         btnGrupo.add(rbFeminino);
         rbFeminino.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -505,10 +497,6 @@ public class Aplicacao extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnPesquisarActionPerformed
 
-    private void rbMasculinoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbMasculinoActionPerformed
-
-    }//GEN-LAST:event_rbMasculinoActionPerformed
-
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
 
         paciente = pacientes.get(tbRegistro.getSelectedRow());
@@ -553,70 +541,7 @@ public class Aplicacao extends javax.swing.JFrame {
 
         }
     }//GEN-LAST:event_btnVisualizarActionPerformed
-
- /*   public final class ValidarCpf {
-  private String cpf;
-  public ValidarCpf() {
-  }
-  public boolean validarCpf(String cpf){  
-      if ( cpf == null ){
-          return false;
-      }
-      else{
-              String cpfGerado = "";    
-              this.cpf = cpf;          
-               removerCaracteres();            
-          if ( verificarSeTamanhoInvalido(this.cpf) )
-               return false;      
-          if ( verificarSeDigIguais(this.cpf) )
-               return false;            
-          cpfGerado = this.cpf.substring(0, 9);
-          cpfGerado = cpfGerado.concat(calculoComCpf(cpfGerado));
-          cpfGerado = cpfGerado.concat(calculoComCpf(cpfGerado));
-         
-          if ( !cpfGerado.equals(this.cpf))
-               return false;
-      }
-      return true;
-  }
-   
-  private void removerCaracteres(){  
-   this.cpf = this.cpf.replace("-","");
-   this.cpf = this.cpf.replace(".","");  
-  }
-  private boolean verificarSeTamanhoInvalido(String cpf){  
-      if ( cpf.length() != 11 )
-        return true;  
-          return false;
-  }
-  private boolean verificarSeDigIguais(String cpf){  
-    //char primDig = cpf.charAt(0);
-      char primDig = '0';
-      char [] charCpf = cpf.toCharArray();  
-         for( char c: charCpf  )
-             if ( c != primDig )
-             return false;        
-             return true;
-  }
-  private String calculoComCpf(String cpf){  
-   int digGerado = 0;
-   int mult = cpf.length()+1;
-   char [] charCpf = cpf.toCharArray();
-   for ( int i = 0; i < cpf.length(); i++ )
-        digGerado += (charCpf[i]-48)* mult--;
-   if ( digGerado % 11 < 2)
-        digGerado = 0;
-   else
-       digGerado = 11 - digGerado % 11;
-   return  String.valueOf(digGerado);
-  }
-  }*/
-    
-    
-    private void txtCPFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCPFActionPerformed
-       
-    }//GEN-LAST:event_txtCPFActionPerformed
-
+  
     private void txtUFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUFActionPerformed
         txtUF.toString().toUpperCase();
     }//GEN-LAST:event_txtUFActionPerformed

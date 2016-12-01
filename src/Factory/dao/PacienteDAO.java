@@ -1,6 +1,6 @@
-package Factory;
+package Factory.dao;
 
-import hospital.agenda.Paciente;
+import hospital.agenda.viwer.Paciente;
 import java.sql.Connection;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
